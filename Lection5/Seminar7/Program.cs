@@ -115,4 +115,46 @@ int[,] myArray = CreateRandom2dArray(m, n, 1, 9);
 KvadratChet(myArray);
 Show2dArray(myArray); */
 
+// === Задача 3. Задайте двумерный массив. Найдите сумму элементов, находящихся на главной 
+// диагонали (с индексами (0,0); (1,1) и т.д.
+
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue) 
+{
+    int[,] newArray = new int[rows, columns];
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            newArray[i, j] = new Random().Next(minValue, maxValue) + 1;
+
+    return newArray;
+}
+
+int GetSum(int[,] array)
+{
+    int sum = 0;
+    if (array.GetLength(0) == array.GetLength(1))
+    {
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            sum += array[i,i];
+        }            
+    }
+    return sum;
+}
+
+void Show2dArray(int[,] array) 
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+            Console.Write(array[i,j] + " ");
+
+        Console.WriteLine();
+    }
+} 
+
+
+int[,] Jojo = (CreateRandom2dArray(5,5,1,9));
+Show2dArray(Jojo);
+Console.WriteLine(GetSum(Jojo) + " ");
 
